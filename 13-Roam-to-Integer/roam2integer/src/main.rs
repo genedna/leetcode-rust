@@ -9,6 +9,11 @@ fn main() {
     println!("MCMXCIV - {}", roman_to_int(String::from("MCMXCIV")));
 }
 
+/// LeetCode 平台运行结果
+///     1. Runtime: 22 ms, faster than 5.43% of Rust online submissions for Roman to Integer.
+///     2. Memory Usage: 2.1 MB, less than 69.42% of Rust online submissions for Roman to Integer.
+/// 
+/// 代码复杂度 - O(n)
 fn roman_to_int(s: String) -> i32 {
     let mut r2i: HashMap<&str, i32> = HashMap::new();
     r2i.insert("I", 1);
