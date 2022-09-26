@@ -1,12 +1,19 @@
 use std::collections::HashMap;
 
-
+///
+/// 
 fn main() {
     println!("III - {}", roman_to_int(String::from("III")));
     println!("IV - {}", roman_to_int(String::from("IV")));
     println!("IX - {}", roman_to_int(String::from("IX")));
     println!("LVIII - {}", roman_to_int(String::from("LVIII")));
     println!("MCMXCIV - {}", roman_to_int(String::from("MCMXCIV")));
+
+    println!("III - {}", roman_to_int2(String::from("III")));
+    println!("IV - {}", roman_to_int2(String::from("IV")));
+    println!("IX - {}", roman_to_int2(String::from("IX")));
+    println!("LVIII - {}", roman_to_int2(String::from("LVIII")));
+    println!("MCMXCIV - {}", roman_to_int2(String::from("MCMXCIV")));
 }
 
 /// LeetCode 平台运行结果
@@ -57,4 +64,33 @@ fn roman_to_int(s: String) -> i32 {
 
     total
 
+}
+
+///
+/// 
+/// 
+fn roman_to_int2(s: String) -> i32 {
+    let mut r2i: HashMap<&str, i32> = HashMap::new();
+    r2i.insert("I", 1);
+    r2i.insert("V", 5);
+    r2i.insert("X", 10);
+    r2i.insert("L", 50);
+    r2i.insert("C", 100);
+    r2i.insert("D", 500);
+    r2i.insert("M", 1000);
+    r2i.insert("IV", 4);
+    r2i.insert("IX", 9);
+    r2i.insert("XL", 40);
+    r2i.insert("XC", 90);
+    r2i.insert("CD", 400);
+    r2i.insert("CM", 900);
+
+    let mut index: i32 = 0;
+    let mut total: i32 = 0;
+
+    while index < s.len() as i32 {
+
+    }
+
+    total
 }
