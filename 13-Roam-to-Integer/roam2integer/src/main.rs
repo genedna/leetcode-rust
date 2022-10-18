@@ -67,7 +67,8 @@ fn roman_to_int(s: String) -> i32 {
 }
 
 ///
-/// 
+/// Runtime: 36 ms, faster than 5.36% of Rust online submissions for Roman to Integer.
+/// Memory Usage: 2.1 MB, less than 34.75% of Rust online submissions for Roman to Integer.
 /// 
 fn roman_to_int2(s: String) -> i32 {
     let mut r2i: HashMap<&str, i32> = HashMap::new();
@@ -78,18 +79,32 @@ fn roman_to_int2(s: String) -> i32 {
     r2i.insert("C", 100);
     r2i.insert("D", 500);
     r2i.insert("M", 1000);
-    r2i.insert("IV", 4);
-    r2i.insert("IX", 9);
-    r2i.insert("XL", 40);
-    r2i.insert("XC", 90);
-    r2i.insert("CD", 400);
-    r2i.insert("CM", 900);
 
-    let mut index: i32 = 0;
+    let mut index: i32 = s.len() as i32 - 1;
     let mut total: i32 = 0;
 
-    while index < s.len() as i32 {
+    while index >= 0 {
+        let mut cur= 0;
+        let mut pre: i32 = 0;
 
+        cur = *r2i.get(s.get(index as usize..(index + 1) as usize).unwrap()).unwrap();
+        println!("current: {} : {}", s.get(index as usize..(index + 1) as usize).unwrap(), cur);
+
+        if index > 0 {
+            pre = *r2i.get(s.get((index - 1) as usize..index as usize).unwrap()).unwrap();
+            println!("previous: {} : {}", s.get((index - 1) as usize..index as usize).unwrap(), pre);
+
+            if pre < cur {
+                total += cur - pre;
+                index -= 2;
+            } else {
+                total += cur;
+                index -= 1;
+            }
+        } else {
+            total += cur;
+            index -= 1;
+        }
     }
 
     total
